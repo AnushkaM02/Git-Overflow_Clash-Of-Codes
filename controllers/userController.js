@@ -66,19 +66,23 @@ exports.getGenderedUsers = async (req, res, next) => {
     match_arr = user.match;
     if (list_of_matches) {
       let random = Math.floor(Math.random() * list_of_matches.length);
-      while (match_arr.includes(list_of_matches[random].email)) {
+      let i = 0;
+      while (i < 25 && match_arr.includes(list_of_matches[random].email)) {
         random = Math.floor(Math.random() * list_of_matches.length);
-        console.log("This is run");
+        i++;
       }
-      console.log(match_arr.includes(list_of_matches[random].email));
-      if (!match_arr.includes(list_of_matches[random].email)) {
-        match_arr.push(list_of_matches[random].email);
+      if (i >= 25) {
+        res.json({ Status: "No available users" });
+      } else {
+        if (!match_arr.includes(list_of_matches[random].email)) {
+          match_arr.push(list_of_matches[random].email);
+        }
+        const matchedUser = await User.updateOne(
+          { email: req.body.email },
+          { match: match_arr }
+        );
+        res.json({ Match: list_of_matches[random].name });
       }
-      const matchedUser = await User.updateOne(
-        { email: req.body.email },
-        { match: match_arr }
-      );
-      res.json({ Match: list_of_matches[random].name });
     }
   } else {
     res.json({ Status: "Error" });
