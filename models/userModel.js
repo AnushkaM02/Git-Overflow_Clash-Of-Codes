@@ -15,6 +15,9 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   gender: { type: String, required: true },
   gender_interest: { type: String, required: true },
+  age_group: { type: String, required: true },
+  age_preference: { type: String, required: true },
+  relation_type: { type: String, required: true },
   match: [matchSchema],
 });
 

@@ -14,6 +14,9 @@ exports.signupController = async (req, res, next) => {
     password: hashedpassword,
     gender: req.body.gender,
     gender_interest: req.body.gender_interest,
+    age_group: req.body.age_group,
+    age_preference: req.body.age_preference,
+    relation_type: req.body.relation_type,
     match: req.body.match,
   });
 
@@ -53,13 +56,18 @@ exports.signinController = async (req, res, next) => {
 };
 
 exports.getGenderedUsers = async (req, res, next) => {
-  const user = await User.findOne({ email: req.body.email });
+  const user = await User.findOne({ email: req.session.email });
   if (user) {
-    const list_of_matches = await User.find({ gender: user.gender_interest });
+    const list_of_matches = await User.find({
+      gender: user.gender_interest,
+      age_group: user.age_preference,
+      relation_type: user.relation_type,
+    });
     if (list_of_matches) {
-      console.log(list_of_matches);
+      let random = Math.floor(Math.random() * list_of_matches.length);
+      res.json({ Match: list_of_matches[random].name });
     }
   } else {
-    res.json({ Status: "Wrong username or password" });
+    res.json({ Status: "Error" });
   }
 };
