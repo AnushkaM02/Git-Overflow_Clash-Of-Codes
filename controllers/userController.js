@@ -17,7 +17,7 @@ exports.signupController = async (req, res, next) => {
     age_group: req.body.age_group,
     age_preference: req.body.age_preference,
     relation_type: req.body.relation_type,
-    match: req.body.match,
+    match: [],
   });
 
   newUser
@@ -63,8 +63,21 @@ exports.getGenderedUsers = async (req, res, next) => {
       age_group: user.age_preference,
       relation_type: user.relation_type,
     });
+    match_arr = user.match;
     if (list_of_matches) {
       let random = Math.floor(Math.random() * list_of_matches.length);
+      while (match_arr.includes(list_of_matches[random].email)) {
+        random = Math.floor(Math.random() * list_of_matches.length);
+        console.log("This is run");
+      }
+      console.log(match_arr.includes(list_of_matches[random].email));
+      if (!match_arr.includes(list_of_matches[random].email)) {
+        match_arr.push(list_of_matches[random].email);
+      }
+      const matchedUser = await User.updateOne(
+        { email: req.body.email },
+        { match: match_arr }
+      );
       res.json({ Match: list_of_matches[random].name });
     }
   } else {

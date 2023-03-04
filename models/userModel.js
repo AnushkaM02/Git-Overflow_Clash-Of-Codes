@@ -1,7 +1,6 @@
 const conn = require("../utils/dbConnection");
 const mongoose = require("mongoose");
 const validator = require("validator");
-const matchSchema = require("./matchModel");
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -18,7 +17,7 @@ const userSchema = new mongoose.Schema({
   age_group: { type: String, required: true },
   age_preference: { type: String, required: true },
   relation_type: { type: String, required: true },
-  match: [matchSchema],
+  match: [String],
 });
 
 module.exports = userSchema;
