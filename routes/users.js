@@ -7,6 +7,6 @@ router.post("/user/sign-up", userController.signupController);
 
 router.post("/user/sign-in", userController.signinController);
 
-router.post("/user/match", userController.getGenderedUsers);
+router.get("/user/match", userController.getGenderedUsers);
 
 module.exports = router;

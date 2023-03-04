@@ -17,6 +17,7 @@ const userSchema = new mongoose.Schema({
   gender_interest: { type: String, required: true },
   age_group: { type: String, required: true },
   age_preference: { type: String, required: true },
+  summary: String,
   relation_type: { type: String, required: true },
   questions: [questionSchema],
   match: [String],
