@@ -12,7 +12,9 @@ const userSchema = new mongoose.Schema({
     required: [true, "Please enter the email"],
     unique: true,
   },
-  password: { type: String, require: true },
+  password: { type: String, required: true },
+  gender: { type: String, required: true },
+  gender_interest: { type: String, required: true },
   match: [matchSchema],
 });
 
