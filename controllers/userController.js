@@ -135,11 +135,23 @@ exports.getGenderedUsers = async (req, res, next) => {
             weight += 3;
           }
         }
-        if (weight > maxWeight) {
+        if (
+          weight > maxWeight &&
+          !match_arr.includes(list_of_matches[i].email)
+        ) {
           maxWeight = weight;
           email = list_of_matches[i].email;
         }
       }
+
+      if (!match_arr.includes(email)) {
+        match_arr.push(email);
+        const matchedUser = await User.updateOne(
+          { email: req.body.email },
+          { match: match_arr }
+        );
+      }
+
       const matchedUser = await User.findOne({ email: email });
       if (matchedUser) {
         res.json({ "Matched User": matchedUser.name });
