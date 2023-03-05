@@ -9,4 +9,6 @@ router.post("/user/sign-in", userController.signinController);
 
 router.get("/user/match", userController.getGenderedUsers);
 
+router.post("/user/onboarding", userController.getInfo);
+
 module.exports = router;

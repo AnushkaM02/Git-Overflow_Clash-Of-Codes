@@ -4,7 +4,7 @@ const validator = require("validator");
 const questionSchema = require("../models/questionsModel");
 
 const userSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  name: String,
   email: {
     type: String,
     lowercase: true,
@@ -13,12 +13,12 @@ const userSchema = new mongoose.Schema({
     unique: true,
   },
   password: { type: String, required: true },
-  gender: { type: String, required: true },
-  gender_interest: { type: String, required: true },
-  age_group: { type: String, required: true },
-  age_preference: { type: String, required: true },
+  gender: String,
+  gender_interest: String,
+  age_group: String,
+  age_preference: String,
   summary: String,
-  relation_type: { type: String, required: true },
+  relation_type: String,
   questions: [questionSchema],
   match: [String],
 });
