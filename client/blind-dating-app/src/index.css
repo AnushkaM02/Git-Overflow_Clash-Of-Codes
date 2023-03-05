@@ -14,9 +14,15 @@ html,body{
   font-family:'Readex Pro',sans-serif;
 }
 
+
 .primary-title {
   font-size: 90px;
   color: #F2EBE9;
+}
+
+.center-btn {
+  display: flex !important;
+  justify-content: center !important;
 }
 
 .primary-button{

@@ -72,7 +72,9 @@ const section = () => {
                 <h2>{title}</h2>
                 <h3>{date}</h3>
                 <p>{description}</p>
-                <button>Book Now</button>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdLPurD2X4FU8Mo3LJNUj_Qmy5HBwiu_Cviw3Vp9LZyKGeJcw/viewform">
+                  <button>Book Now</button>
+                </a>
               </div>
             </div>
           </div>

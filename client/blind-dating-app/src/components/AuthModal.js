@@ -1,10 +1,11 @@
 import { useState } from "react";
-// const axios = require("axios");
-import { Link } from "react-router-dom";
-// const res = await axios.post("https:sample-endpoint.com/data");
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { is } from "@react-spring/shared";
 
 const AuthModal = ({ setShowModal, isSignUp }) => {
-  // const [email, setEmail] = useState(null);
+  const navigate = useNavigate();
+  const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
   const [error, setError] = useState(null);
@@ -57,11 +58,11 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       <div className="close-icon" onClick={handleClick}>
         ⓧ
       </div>
-      <h2>{isSignUp ? "SIGN UP" : "LOG IN"}</h2>
+      <h2>{isSignUp ? "CREATE ACCOUNT" : "LOG IN"}</h2>
       <h5>
         <i>
-          Welcome to truelink! Make sure you are adhere to the privacy and
-          safety regulations.
+          By clicking Log In, you agree to our terms. Learn how we process your
+          data in our Privacy Policy and Cookie Policy.
         </i>
       </h5>
 
@@ -70,15 +71,15 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
           type="email"
           id="email"
           name="email"
-          placeholder="Email"
+          placeholder="email"
           required={true}
-          // onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
           id="password"
           name="password"
-          placeholder="Password"
+          placeholder="password"
           required={true}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -87,19 +88,17 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
             type="password"
             id="password-check"
             name="password-check"
-            placeholder="Confirm Password"
+            placeholder="confirm password"
             required={true}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         )}
-        <Link to="/onboarding">
-          <input className="secondary-button" type="submit" />
-        </Link>
+        <input className="secondary-button" type="submit" />
         <p>{error}</p>
       </form>
 
       <hr />
-      <h2>Blind Date Matchmaking & Event Hosting</h2>
+      <h2>GET THE APP</h2>
     </div>
   );
 };
