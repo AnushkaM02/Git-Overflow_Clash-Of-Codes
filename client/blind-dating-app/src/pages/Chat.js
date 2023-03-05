@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./ChatPage.css";
 // import { Redirect } from 'react-router-dom';
 import Home from "./Home";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Nav from "../components/Nav.js";
 
 const Chat = () => {
-  const [timeLeft, setTimeLeft] = useState(45); // 5 minute countdown timer
+  const [timeLeft, setTimeLeft] = useState(25); // 5 minute countdown timer
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const iceBreakers = [
@@ -101,8 +101,11 @@ const Chat = () => {
               <h2 className="overlay-text">
                 Do you want to share your profile?
               </h2>
+
               <div className="overlay-buttons">
-                <button>Share Profile</button>
+                <Link to="/events">
+                  <button>Share Profile</button>
+                </Link>
                 <button className="dont-share">Do Not Share Profile</button>
               </div>
             </div>

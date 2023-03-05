@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { is } from "@react-spring/shared";
 
 const AuthModal = ({ setShowModal, isSignUp }) => {
@@ -93,7 +93,9 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         )}
-        <input className="secondary-button" type="submit" />
+        <Link to="/onboarding">
+          <input className="secondary-button" type="submit" />
+        </Link>
         <p>{error}</p>
       </form>
 

@@ -54,7 +54,7 @@ const OnBoarding = () => {
                 value={formData.first_name}
                 onChange={handleChange}
               />
-              <br></br>
+
               <label>Birthday</label>
               <div className="multiple-input-container">
                 <input
@@ -129,7 +129,7 @@ const OnBoarding = () => {
                   checked={formData.show_gender}
                 />
               </div>
-              <br></br>
+
               <label>My Match Preferences </label>
 
               <div className="multiple-input-container">
@@ -162,6 +162,38 @@ const OnBoarding = () => {
                 <label htmlFor="everyone-gender-interest">Other</label>
               </div>
 
+              <label>Preferred Relationship </label>
+
+              <div className="multiple-input-container">
+                <input
+                  id="male-gender-interest"
+                  type="radio"
+                  name="gender_interest"
+                  value="male"
+                  onChange={handleChange}
+                  checked={formData.gender_interest === "male"}
+                />
+                <label htmlFor="male-gender-interest">Friendship</label>
+                <input
+                  id="female-gender-interest"
+                  type="radio"
+                  name="gender_interest"
+                  value="female"
+                  onChange={handleChange}
+                  checked={formData.gender_interest === "female"}
+                />
+                <label htmlFor="female-gender-interest">Short term</label>
+                <input
+                  id="everyone-gender-interest"
+                  type="radio"
+                  name="gender_interest"
+                  value="everyone"
+                  onChange={handleChange}
+                  checked={formData.gender_interest === "everyone"}
+                />
+                <label htmlFor="everyone-gender-interest">Long term</label>
+              </div>
+
               <label htmlFor="about">About Me </label>
               <input
                 id="about"
@@ -172,7 +204,6 @@ const OnBoarding = () => {
                 value={formData.about}
                 onChange={handleChange}
               />
-              <br></br>
 
               <label htmlFor="socials">My Socials</label>
               <input
@@ -183,7 +214,6 @@ const OnBoarding = () => {
                 value={formData.socials}
                 onChange={handleChange}
               />
-              <br></br>
 
               <hr color="grey" />
 
@@ -220,9 +250,7 @@ const OnBoarding = () => {
                     onChange={handleChange}
                     checked={formData.ques1_3}
                   />
-                  <div>
-                    <br></br>
-                  </div>
+                  <div></div>
                   <label htmlFor="ques1_3">Cooking</label>
                   <input
                     id="ques1_4"
@@ -254,8 +282,6 @@ const OnBoarding = () => {
                   <label htmlFor="ques1_6">Politics</label>
                 </div>
 
-                <br></br>
-
                 <label>Which connection is more important to you?</label>
                 <div className="multiple-input-container">
                   <input
@@ -278,8 +304,6 @@ const OnBoarding = () => {
                   <label htmlFor="ques2_2">Physical</label>
                 </div>
 
-                <br></br>
-
                 <label>What describes you the most?</label>
                 <div className="multiple-input-container">
                   <input
@@ -301,8 +325,6 @@ const OnBoarding = () => {
                   />
                   <label htmlFor="ques3_2">Family-Oriented</label>
                 </div>
-
-                <br></br>
 
                 <label>Employment Status</label>
                 <div className="multiple-input-container">
@@ -335,8 +357,6 @@ const OnBoarding = () => {
                   <label htmlFor="ques4_3">Full-Time</label>
                 </div>
 
-                <br></br>
-
                 <label>Is Religion important to you?</label>
                 <div className="multiple-input-container">
                   <input
@@ -358,8 +378,6 @@ const OnBoarding = () => {
                   />
                   <label htmlFor="ques5_2">No</label>
                 </div>
-
-                <br></br>
 
                 <label>Is Politics important to you?</label>
                 <div className="multiple-input-container">
@@ -387,21 +405,6 @@ const OnBoarding = () => {
                 <input type="submit" />
               </Link>
             </section>
-
-            {/* <section> }
-                        {/* <label htmlFor="url">Profile Photo</label>
-                        <input
-                            type="url"
-                            name="url"
-                            id="url"
-                            onChange={handleChange}
-                            required={true}
-                        /> */}
-            {/* <div className="photo-container">
-                            {formData.url && <img src={formData.url} alt="profile pic preview"/>}
-                        </div> */}
-
-            {/* </section> */}
           </form>
         </div>
       </div>

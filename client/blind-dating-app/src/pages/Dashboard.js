@@ -144,7 +144,7 @@ const Dashboard = () => {
           {showMatchCard && (
             <div className="match-card-overlay">
               <MatchCard
-                name="Georgia Matthews"
+                name="George Matthews"
                 age="24"
                 interests="Hiking, Reading, Cooking"
               />
